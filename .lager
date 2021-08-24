@@ -1,7 +1,7 @@
 [LAGER]
 
 [DEVENV]
-image = espressif/idf:release-v4.0
+image = lagerdata/devenv-esp32:version-1.0
 mount_dir = /app
 shell = /bin/bash
 cmd.build = idf.py build
