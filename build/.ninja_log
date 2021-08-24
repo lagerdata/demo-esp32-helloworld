@@ -1,0 +1,4 @@
+# ninja log v5
+355	362	1629762207	project_elf_src.c	8618b1296c0865ff
+357	367	1629762207	esp-idf/esp32/esp32_out.ld	850aea6fbbb04191
+355	404	1629762207	partition_table/partition-table.bin	8ffa6811e33b5157
