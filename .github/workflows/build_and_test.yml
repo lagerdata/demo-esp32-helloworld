@@ -15,15 +15,10 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Build Project
+      - name: Build and Flash Project
         uses: docker://lagerdata/devenv-esp32:version-1.0
         with:
           entrypoint: lager
-          args: exec ls
+          args: exec build_and_flash -u root
 
-      - name: Flash Board
-        uses: docker://lagerdata/devenv-esp32:version-1.0
-        with:
-          entrypoint: lager
-          args: exec pwd
 
