@@ -24,4 +24,26 @@ jobs:
           entrypoint: lager
           args: exec build_and_flash -u root
 
+      - name: Upload test
+        uses: actions/upload-artifact@v2
+        with:
+          name: hello_world_test
+          path: tests/test.py
 
+  test: #test basic BLE functionality
+    runs-on: ubuntu-latest
+    needs: [build_and_flash]
+    steps:
+      - name: Download test script
+        uses: actions/download-artifact@v2
+        with:
+          name: hello_world_test
+
+      - name: Test Hello World
+        uses: docker://lagerdata/lager-cli
+        env:
+          LAGER_TOKEN_ID: ${{ secrets.LAGER_TOKEN_ID }} 
+          LAGER_TOKEN_SECRET: ${{ secrets.LAGER_TOKEN_SECRET }}
+        with:
+          entrypoint: lager
+          args: python test.py
