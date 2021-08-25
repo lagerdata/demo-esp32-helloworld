@@ -1,0 +1,38 @@
+name: Workflow for building and running some simple hardware tests
+on: [push]
+env:
+  LAGER_GATEWAY: 45
+concurrency: 
+  group: dut
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+
+      - name: Connect to gateway
+        uses: docker://lagerdata/lager-cli
+        env:
+          LAGER_TOKEN_ID: ${{ secrets.LAGER_TOKEN_ID }} 
+          LAGER_TOKEN_SECRET: ${{ secrets.LAGER_TOKEN_SECRET }}     #This is setup inside GitHub see https://docs.lagerdata.com/ci/github_actions.html     
+        with:
+          entrypoint: lager
+          args: connect --device nrf52 --force
+
+      - name: Build Project
+        uses: docker://lagerdata/devenv-esp32:version-1.0
+        with:
+          entrypoint: lager
+          args: exec build -u root
+
+      - name: Flash Board
+        uses: docker://lagerdata/devenv-esp32:version-1.0
+        with:
+          entrypoint: lager
+          args: exec flash -u root
+
