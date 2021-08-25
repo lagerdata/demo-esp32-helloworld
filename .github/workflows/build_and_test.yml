@@ -17,6 +17,9 @@ jobs:
 
       - name: Build and Flash Project
         uses: docker://lagerdata/devenv-esp32:version-1.0
+        env:
+          LAGER_TOKEN_ID: ${{ secrets.LAGER_TOKEN_ID }} 
+          LAGER_TOKEN_SECRET: ${{ secrets.LAGER_TOKEN_SECRET }}        
         with:
           entrypoint: lager
           args: exec build_and_flash -u root
