@@ -2,7 +2,7 @@
 
 [DEVENV]
 image = lagerdata/devenv-esp32:version-1.0
-mount_dir = /github/workspace
+mount_dir = /app
 shell = /bin/bash
 cmd.build = idf.py build
 cmd.clean = rm -rf build
