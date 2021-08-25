@@ -19,11 +19,11 @@ jobs:
         uses: docker://lagerdata/devenv-esp32:version-1.0
         with:
           entrypoint: lager
-          args: exec build -u root
+          args: exec ls
 
       - name: Flash Board
         uses: docker://lagerdata/devenv-esp32:version-1.0
         with:
           entrypoint: lager
-          args: exec flash -u root
+          args: exec pwd
 
