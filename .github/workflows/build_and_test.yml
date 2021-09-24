@@ -43,13 +43,13 @@ jobs:
             ./build/*args
           retention-days: 3
 
-      - name: demo-esp32-hello-world
+      - name: Download esp32-hello-world zip
         uses: actions/download-artifact@v2
         with:
           name: demo-esp32-hello-world
 
-      - name: Unzip demo-esp32-hello-world.zip
-        run: tar -xvzf demo-esp32-hello-world.zip
+      - name: Unzip demo-esp32-hello-world
+        run: tar -xvzf demo-esp32-hello-world
 
   test: #test basic functionality
     runs-on: ubuntu-latest
