@@ -51,8 +51,8 @@ jobs:
       - name: Unzip demo-esp32-hello-world
         uses: docker://lagerdata/lager-cli
         with:
-          entrypoint: tar      
-          args: -xvzf demo-esp32-hello-world
+          entrypoint: ls      
+          args: -al
 
   test: #test basic functionality
     runs-on: ubuntu-latest
