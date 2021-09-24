@@ -49,7 +49,7 @@ jobs:
           name: demo-esp32-hello-world
 
       - name: Unzip demo-esp32-hello-world
-        run: tar -xvzf demo-esp32-hello-world
+        run: tar -xvzf demo-esp32-hello-world.zip
 
   test: #test basic functionality
     runs-on: ubuntu-latest
